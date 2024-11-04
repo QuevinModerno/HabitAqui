@@ -1,0 +1,53 @@
+﻿@model TPpweb.Models.Reservation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Gestão de arrendamentos</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdReservation" />
+            <input type="hidden" asp-for="FkHousing" />
+            <input type="hidden" asp-for="FkClient" />
+            <input type="hidden" asp-for="DataFim" />            
+            <input type="hidden" asp-for="DataInicio" />            
+            <input type="hidden" asp-for="Price" />            
+            <input type="hidden" asp-for="AvaliacaoDada" />            
+            
+            <style>
+                .form-check-input {
+                    transform: scale(1.5); /* Ajuste o valor conforme necessário para aumentar o tamanho */
+                }
+            </style>
+           
+            <div class="row">
+                <div class="col-sm-auto">
+                    <div class="form-group form-check">
+                        <input class="form-check-input" asp-for="accepted" id="acceptedCheckbox">
+                        <label class="form-check-label" for="acceptedCheckbox">@Html.DisplayNameFor(model => model.accepted)</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-auto">
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Reservations" asp-action="Index" asp-route-id="@Model.FkHousing">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

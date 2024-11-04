@@ -1,0 +1,41 @@
+﻿@using TPpweb.ViewModels
+@model List<ReservationViewModel>
+
+
+<h2>Histórico de Arrendamentos</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>    
+                <th>Data de Início</th>
+                <th>Data de Fim</th>
+                <th>Habitação</th>
+                <th>Avaliação</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var arrendamento in Model)
+            {
+                <tr>
+                    <td>@arrendamento.BeginDate.ToShortDateString()</td>
+                    <td>@arrendamento.EndDate.ToShortDateString()</td>
+                    <td>@arrendamento.FkHousing</td>
+                    <td>@(arrendamento.AvaliacaoDada ? "Avaliado" : "Pendente")</td>
+                    <td>
+                        @if (!arrendamento.AvaliacaoDada)
+                        {
+                            <a class="btn btn-primary" href="@Url.Action("AvaliarHabitacao", "User", new { arrendamentoId = arrendamento.Id })">Avaliar</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não há arrendamentos no histórico.</p>
+}

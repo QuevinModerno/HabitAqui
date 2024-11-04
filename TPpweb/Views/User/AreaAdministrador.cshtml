@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Área do Administrador";
+}
+
+<h2>Área do Administrador</h2>
+
+<div class="btn-group" role="group">
+    <div class="btn-group" role="group">
+        <button id="locatorsDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Locadores
+        </button>
+        <div class="dropdown-menu" aria-labelledby="locatorsDropdown">
+            <a class="dropdown-item" href="@Url.Action("Index", "Landlords")">Lista de Locadores</a>
+            <a class="dropdown-item" href="@Url.Action("Create", "Landlords")">Criar Locador</a>
+         
+        </div>
+    </div>
+</div>
+
+    <div class="btn-group" role="group">
+        <button id="housingCategoriesDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categorias de Habitações
+        </button>
+        <div class="dropdown-menu" aria-labelledby="housingCategoriesDropdown">
+            <a class="dropdown-item" href="#">Lista de Categorias</a>
+            <a class="dropdown-item" href="#">Adicionar Categoria</a>
+            <a class="dropdown-item" href="#">Editar Categoria</a>
+        </div>
+    </div>
+
+    <div class="btn-group" role="group">
+        <button id="usersDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Utilizadores
+        </button>
+        <div class="dropdown-menu" aria-labelledby="usersDropdown">
+            <a class="dropdown-item" href="@Url.Action("ListUsers", "User")">Lista de Utilizadores</a>
+        </div>
+    </div>
+<div class="btn-group" role="group">
+    <div class="btn-group" role="group">
+        <button id="locatorsDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Habitações
+        </button>
+        <div class="dropdown-menu" aria-labelledby="housingsDropdown">
+            <a class="dropdown-item" href="@Url.Action("AdminCreate", "Housings", new { id = ViewBag.EmployerId})">Adicionar Habitação</a>
+        </div>
+    </div>
+</div>
+
+

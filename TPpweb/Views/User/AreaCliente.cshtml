@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Área do Cliente";
+}
+
+<h2>Área do Cliente</h2>
+
+<div class="btn-group" role="group">
+    <div class="btn-group" role="group">
+        <button id="reviewsDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Avaliações
+        </button>
+        <div class="dropdown-menu" aria-labelledby="reviewsDropdown">
+            <a class="dropdown-item" href="@Url.Action("MinhasAvaliacoes", "User")">Minhas Avaliaçoes</a>
+        </div>
+    </div>
+</div>
+
+<div class="btn-group" role="group">
+    <div class="btn-group" role="group">
+        <button id="rentalsDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Arrendamentos
+        </button>
+        <div class="dropdown-menu" aria-labelledby="rentalsDropdown">
+            <a class="dropdown-item" href="@Url.Action("HistoricoArrendamentos", "User")">Histórico de Arrendamentos</a>
+        </div>
+    </div>
+</div>

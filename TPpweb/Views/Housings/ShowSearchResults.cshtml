@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TPpweb.Models.Housing>
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div class="container">
+    <h1 class="display-4">Search Results</h1>
+
+    <!-- Adicione o formulário de ordenação -->
+    <form asp-action="ShowSearchResults" asp-route-searchWord="@ViewData["searchWord"]" asp-route-location="@ViewData["location"]" asp-route-type="@ViewData["type"]" asp-route-startDate="@ViewData["startDate"]" asp-route-endDate="@ViewData["endDate"]" method="get" class="mb-3">
+        <div class="form-row">
+            <div class="col">
+                <select name="OrderBy" class="form-control">
+                    <option value="Default">Padrão</option>
+                    <option value="PriceAsc">Preço (Menor para Maior)</option>
+                    <option value="PriceDesc">Preço (Maior para Menor)</option>
+                    <option value="RatingAsc">Avaliação (Menor para Maior)</option>
+                    <option value="RatingDesc">Avaliação (Maior para Menor)</option>
+                </select>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Ordenar</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        @foreach (var housing in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="@housing.ImagePath" class="card-img-top" alt="House Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@housing.Name</h5>
+                        <p class="card-text">Cost: @housing.PriceMonth</p>
+                        <p class="card-text">Landlord: @housing.FkLandLord</p>
+                        <p class="card-text">@housing.Description</p>
+                        <p class="card-text">Cost: @housing.PriceMonth</p>
+                        <p class="card-text">Landlord: @housing.Landlord</p>
+
+                        <p class="card-text">Cost: @housing.PriceMonth</p>
+                        <p class="card-text">Landlord: @housing.FkLandLord</p>
+
+                        <p class="card-text">@housing.Description</p>
+                        <p class="card-text">Cost: @housing.PriceMonth</p>
+                        <p class="card-text">Landlord: @housing.Landlord</p>
+
+                        <p class="card-text">Landlord Rating: @(housing.Landlord != null && housing.Landlord.ratings != null ? housing.Landlord.ratings.ToString() : "Ainda sem avaliações")</p>
+                        <a href="@Url.Action("Details", new { id = housing.Id })" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

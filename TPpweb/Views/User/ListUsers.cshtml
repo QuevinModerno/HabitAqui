@@ -1,0 +1,69 @@
+﻿@using TPpweb.ViewModels
+@model List<UserViewModel>
+
+<h2>Lista de Utilizadores</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome de Utilizador</th>
+            <th>Email</th>
+            <th>Funções</th>
+            <th>Ações</th>
+            <th>Ativa/Desativa</th>
+            <th>Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@string.Join(", ", user.Roles)</td>
+                <td>
+                    <!-- Botão Editar, mostrar apenas se não for admin -->
+                    @if (!user.IsAdmin)
+                    {
+                        <a class="btn btn-primary" href="@Url.Action("EditUser", "User", new { userId = user.UserId })">Editar</a>
+                    }
+                    <!-- Adicione outros botões de ação, se necessário -->
+
+                </td>
+                <td>
+                    <!-- Botão Ativar, mostrar apenas se não for admin -->
+                    @if (!user.IsAdmin)
+                    {
+                        <form asp-action="ActivateUser" method="post" style="display: inline;">
+                            <input type="hidden" name="userId" value="@user.UserId" />
+                            <button type="submit" class="btn btn-success">Ativar</button>
+                        </form>
+                    }
+
+                    <!-- Botão Desativar, mostrar apenas se não for admin -->
+                    @if (!user.IsAdmin)
+                    {
+                        <form asp-action="DeactivateUser" method="post" style="display: inline;">
+                            <input type="hidden" name="userId" value="@user.UserId" />
+                            <button type="submit" class="btn btn-danger">Desativar</button>
+                        </form>
+                    }
+                </td>
+                <td>
+                    <!-- Botão Excluir, mostrar apenas se não for admin -->
+                    @if (!user.IsAdmin)
+                    {@if (!user.HasAssociatedHouse)
+                        {
+                            <form asp-action="DeleteUser" method="post" style="display: inline;">
+                                <input type="hidden" name="userId" value="@user.UserId" />
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,89 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Person> SignInManager
+@inject UserManager<Person> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+        var userRoles = await UserManager.GetRolesAsync(await UserManager.GetUserAsync(User));
+        
+       
+            if (userRoles.Contains("Funcionario"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="AreaFuncionario">Área do Funcionário</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                </form>
+            </li>
+        }
+        else if (userRoles.Contains("Gestor"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="AreaGestor">Área do Gestor</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                </form>
+            </li>
+        }
+        else if (userRoles.Contains("Cliente"))
+        {
+            <li class="nav-item">
+                 <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="AreaCliente">Área do Cliente</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                </form>
+            </li>
+        }
+        else if (userRoles.Contains("Administrador"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="AreaAdministrador">Área do Administrador</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                </form>
+            </li>
+        }
+       
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                </form>
+            </li>
+        }
+}
+else
+{
+        <li class="nav-item">
+            <a class="nav-link text-dark btn btn-warning" asp-area="Identity" asp-page="/Account/Register">Registo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white btn btn-outline-light" asp-area="Identity" asp-page="/Account/Login">Entrar</a>
+        </li>
+}
+</ul>

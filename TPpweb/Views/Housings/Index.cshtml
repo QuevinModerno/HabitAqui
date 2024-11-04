@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TPpweb.ViewModels.HousingViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container bg-white">
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal">Properties</h1>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
+        @foreach (var housingViewModel in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card rounded-2 shadow-sm h-100">
+                    <div class="card-header py-2">
+                        <h5 class="my-0 fw-normal fs-5">@housingViewModel.housing.Name</h5>
+                    </div>
+                    <div class="card-body p-2">
+                        <div class="listing-picture">
+                            @*<img src="@housingViewModel.housing.ImagePath" alt="House Image" style="max-width: 100%;">*@
+                            <img src="@housingViewModel.housing.ImagePath" alt="House Image" style="max-width: 100%;" />
+                        </div>
+                        <div class="fig_caption">
+                            <p class="listing-price fs-6">@housingViewModel.landLordName</p>
+                        </div>
+                        <p class="fs-6">@housingViewModel.AverageStars @housingViewModel.housing.PriceMonth</p>
+                            
+                        <a asp-action="Details" asp-route-id="@housingViewModel.housing.Id" class="w-100 btn btn-sm btn-outline-primary">View Details</a>
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

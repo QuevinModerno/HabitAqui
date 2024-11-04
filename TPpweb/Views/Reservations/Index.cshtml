@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TPpweb.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Housing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Housing.TipeHabit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.accepted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Housing.Name)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Housing.TipeHabit)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.accepted)
+            </td>
+
+           @if (!item.accepted)
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdReservation">Gerir</a> |
+                     </td>
+                }
+        </tr>
+}
+    </tbody>
+</table>

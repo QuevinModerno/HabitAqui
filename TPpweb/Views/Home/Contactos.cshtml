@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Contactos";
+}
+
+    <div class="container">
+        <h2>Fale Conosco</h2>
+    <form asp-action="EnviarMensagem" method="post" id="mensagemForm">
+    <div class="mb-3">
+        <label for="Nome" class="form-label">Nome:</label>
+        <input type="text" class="form-control" id="Nome" name="Nome" required>
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Endereço de E-mail:</label>
+        <input type="email" class="form-control" id="Email" name="Email" required>
+    </div>
+    <div class="mb-3">
+        <label for="Assunto" class="form-label">Assunto:</label>
+        <input type="text" class="form-control" id="Assunto" name="Assunto" required>
+    </div>
+    <div class="mb-3">
+        <label for="Mensagem" class="form-label">Mensagem:</label>
+        <textarea class="form-control" id="Mensagem" name="Mensagem" rows="5" required></textarea>
+    </div>
+        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+        </form>
+    </div>
+
+
+<div class="modal fade" id="confirmacaoModal" tabindex="-1" aria-labelledby="confirmacaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmacaoModalLabel">Mensagem Enviada!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Sua mensagem foi enviada com sucesso.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('mensagemForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        document.getElementById('mensagemForm').reset();
+
+        var myModal = new bootstrap.Modal(document.getElementById('confirmacaoModal'));
+        myModal.show();
+    });
+</script>
+
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        <h3>Informações de Contato</h3>
+        <address>
+    <strong>HabitAqui</strong><br>
+    R. Pedro Nunes, Coimbra<br>
+    <abbr title="Telefone">Tel:</abbr> (123) 456-7890<br>
+    <abbr title="Email">Email:</abbr> HabitaquiCoimbra@empresa.com
+</address>
+    </div>
+</footer>
+
+<section class="map-section">
+    <h3>Nossa Localização</h3>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1523.8697047948945!2d-8.412319464197848!3d40.19261243822661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd22f9916a32cfd3%3A0xca4589d604c71bc6!2sInstituto%20Superior%20de%20Engenharia%20de%20Coimbra!5e0!3m2!1spt-PT!2spt!4v1701716870021!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+ 

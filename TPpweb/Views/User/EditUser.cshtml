@@ -1,0 +1,51 @@
+﻿@model TPpweb.Models.Person
+
+<h2>Editar Utilizador</h2>
+
+<form asp-action="UpdateUser" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Morada"></label>
+        <input asp-for="Morada" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DataNascimento"></label>
+        <input asp-for="DataNascimento" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Contacto"></label>
+        <input asp-for="Contacto" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BI"></label>
+        <input asp-for="BI" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NIF"></label>
+        <input asp-for="NIF" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Passe"></label>
+        <input asp-for="Passe" class="form-control" />
+    </div>
+
+    <!-- Adicione outros campos aqui -->
+
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>

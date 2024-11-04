@@ -1,0 +1,32 @@
+﻿@model List<Rating>
+
+<h2>Minhas Avaliações</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Reserva</th>
+                <th>Pontuação</th>
+                <th>Data de Avaliação</th>
+                <th>Comentário</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var avaliacao in Model)
+            {
+                <tr>
+                    <td>@avaliacao.Reservation.IdReservation</td>
+                    <td>@avaliacao.Stars</td>
+                    <td>@avaliacao.DateRating.ToShortDateString()</td>
+                    <td>@avaliacao.Comment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhuma avaliação encontrada.</p>
+}

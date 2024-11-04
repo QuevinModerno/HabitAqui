@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "AreaGestor";
+}
+
+<h1>AreaGestor</h1>
+
+<div class="btn-group" role="group">
+    <div class="btn-group" role="group">
+        <button id="locatorsDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Adicionar
+        </button>
+        <div class="dropdown-menu" aria-labelledby="housingsDropdown">
+            <a class="dropdown-item" href="@Url.Action("Create", "Employers")">Adicionar Funcionario</a>
+            <a class="dropdown-item" href="@Url.Action("CreateGestor", "User")">Adicionar Gestor</a>
+        </div>
+    </div>
+    <a href="@Url.Action("ListUsers", "User")" class="btn btn-primary">Listar Usuários</a>
+</div>
+
+<div class="btn-group" role="group">
+    <div class="btn-group" role="group">
+        <button id="locatorsDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reservas
+        </button>
+        <div class="dropdown-menu" aria-labelledby="housingsDropdown">
+            <a class="dropdown-item" href="@Url.Action("IndexAll", "Reservations", new { employerId = ViewBag.EmployerId})">Lista de reservas </a>
+        </div>
+    </div>
+</div>
+
+<div class="btn-group" role="group">
+    <div class="btn-group" role="group">
+        <button id="locatorsDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Habitações
+        </button>
+        <div class="dropdown-menu" aria-labelledby="housingsDropdown">
+            <a class="dropdown-item" href="@Url.Action("ShowHouses", "Employers", new { id = ViewBag.EmployerId})">Lista de Habitações </a>
+            <a class="dropdown-item" href="@Url.Action("CreateHouse", "Employers", new { id = ViewBag.EmployerId})">Adicionar Habitação</a>
+        </div>
+    </div>
+</div>
+

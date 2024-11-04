@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="jumbotron">
+        <h1>Bem-vindo de volta,<span class="highlight-text">@User.Identity.Name</span>!</h1>
+        <p>Esta é a página para usuários autenticados.</p>
+        </div>
+    }
+    else
+    {
+        <div class="jumbotron">
+        <h1>Bem-vindo ao <span class="highlight-text">HabitAqui</span>!</h1>
+        <p class="lead">A plataforma de gestão de arrendamento de habitações.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>O que oferecemos</h2>
+                <p>Descubra as melhores habitações disponíveis para arrendamento. Pesquise por localização, tipo e datas desejadas.</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Como funciona</h2>
+                <p>Faça login para começar a explorar as funcionalidades exclusivas. Se ainda não tem uma conta, registre-se agora!</p>
+                <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </div>
+        </div>
+    }

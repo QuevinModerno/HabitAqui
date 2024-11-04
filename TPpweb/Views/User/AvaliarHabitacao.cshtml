@@ -1,0 +1,31 @@
+﻿@using TPpweb.ViewModels
+@model ReservationViewModel
+
+<h2>Avaliar Habitação</h2>
+
+@using (Html.BeginForm("AvaliarHabitacao", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Client)
+
+    <div class="form-group">
+        <label for="RatingStars">Pontuação:</label>
+        @Html.TextBoxFor(model => model.RatingStars, new { @class = "form-control", type = "number", step = "0.1" })
+        @Html.ValidationMessageFor(model => model.RatingStars, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="RatingDate">Data de Avaliação:</label>
+        @Html.TextBoxFor(model => model.RatingDate, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.RatingDate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="RatingComment">Comentário:</label>
+        <textarea name="RatingComment" class="form-control">@Model.RatingComment</textarea>
+        @Html.ValidationMessageFor(model => model.RatingComment, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar Avaliação</button>
+}
